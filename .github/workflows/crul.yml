@@ -24,7 +24,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: execute py script
-          run: python crul_data.py
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+        run: python crul_data.py
 
       - name: commit files
           run: |
